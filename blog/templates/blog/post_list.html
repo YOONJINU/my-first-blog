@@ -1,57 +1,55 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <title>Task Management</title>
     </head>
     <body>
         <div>
-
-          <HTML>
           <HEAD>
-          <TITLE> New Document </TITLE>
-          <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
-          <SCRIPT LANGUAGE="JavaScript">
-          <!--
-           function display() {
-            var date1 = new Date();
+            <TITLE> New Document </TITLE>
+            <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+            <SCRIPT LANGUAGE="JavaScript">
+            <!--
+              function display() {
+                var date1 = new Date();
 
-            year=date1.getYear() +1900;
-            month=date1.getMonth() + 1;
-            day=date1.getDate();
-            hour=date1.getHours();
-            min=date1.getMinutes();
-            sec=date1.getSeconds();
-            document.form1.ttt.value=year + "." + month + "." + day + ". " + hour + ":" + min + ":" + sec;
-            setTimeout("display()",1000);
-           }
-          //-->
-          </SCRIPT>
+                year=date1.getYear() +1900;
+                month=date1.getMonth() + 1;
+                day=date1.getDate();
+                hour=date1.getHours();
+                min=date1.getMinutes();
+                sec=date1.getSeconds();
+                document.form1.ttt.value=year + "." + month + "." + day + ". " + hour + ":" + min + ":" + sec;
+                setTimeout("display()",1000);
+              }
+              //-->
+              </SCRIPT>
           </HEAD>
 
-
           <BODY onLoad="display()">
-          <form name="form1">
-          <input tye="text" name="ttt"><br>
-          <!--<input type="button" value="종료" onClick="self.close()">-->
-          </form>
+            <form name="form1">
+              <input tye="text" name="ttt"><br>
+              <!--<input type="button" value="종료" onClick="self.close()">-->
+            </form>
           </BODY>
-          </HTML>
 
-
-
-
-
-            <h1><a href="http://yoonjinwoo.pythonanywhere.com/">Project</a></h1>
+          <h1><a href="http://yoonjinwoo.pythonanywhere.com/">Project</a></h1>
         </div>
 
-        <div>
-            <h2><a href="">My first post</a></h2>
-            <p>I can do project!! :)</p>
-        </div>
+        {% for post in posts %}
+            <div>
+              {{posts}}
+            </div>
+        {% endfor %}
 
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">My second post</a></h2>
-            <p>I wanna eat Korean BBQ.!!!!:)</p>
-        </div>
-    </body>
+        {% for post in posts %}
+            <div>
+                <p>published: {{ post.published_date }}</p>
+                <h1><a href="">{{ post.title }}</a></h1>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
+
+
+  </body>
 </html>
